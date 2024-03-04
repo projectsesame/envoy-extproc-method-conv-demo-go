@@ -16,7 +16,7 @@ type processor interface {
 }
 
 var processors = map[string]processor{
-	"payload-limit": &payloadLimitRequestProcessor{},
+	"method-conv": &methodConvRequestProcessor{},
 }
 
 func parseArgs(args []string) (port *int, opts *ep.ProcessingOptions, nonFlagArgs []string) {
