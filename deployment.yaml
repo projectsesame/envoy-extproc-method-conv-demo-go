@@ -2,22 +2,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: caching-demo
-  namespace: caching-demo
+  name: method-conv-demo
+  namespace: method-conv-demo
   annotations:
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: caching-demo
+      app: method-conv-demo
   template:
     metadata:
       creationTimestamp: null
       labels:
-        app: caching-demo
+        app: method-conv-demo
     spec:
       containers:
-        - name: caching-demo-container
+        - name: method-conv-demo-container
           image: >-
             release.daocloud.io/skoala/envoy-extproc-method-conv-demo-go@sha256:c34e44524fbb6e2a3e7ef16ccc79979091196c1183cf710057d98b95e869390c
           ports:
@@ -44,8 +44,8 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: caching-demo
-  namespace: caching-demo
+  name: method-conv-demo
+  namespace: method-conv-demo
   annotations:
 spec:
   ports:
@@ -54,7 +54,7 @@ spec:
       targetPort: 50051
       nodePort: 31928
   selector:
-    app: caching-demo
+    app: method-conv-demo
   type: NodePort
   sessionAffinity: None
   externalTrafficPolicy: Cluster
